@@ -1,6 +1,6 @@
 //5432
 const Sequelize = require('sequelize');
-const db = new Sequelize('codegig', 'postgres', '123456qwertyuiopoi', {
+const db = new Sequelize('firstDemo', 'postgres', '123456qwertyuiopoi', {
     host: 'localhost',
     dialect: 'postgres',
     operatorsAliases: false,
