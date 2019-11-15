@@ -11,21 +11,22 @@ const db = require('./config/database');
 //Test DB
 db.authenticate()
     .then(() => console.log('Database connected...'))
-    .catch(err => console.log('Error => ' + err))
+    .catch(err => console.log('Error => ' + err));
 
-app.get('/', (req, res) => {
-    res.send('Index')
-})
+app.get('/', (req, res) => res.render('index', { layout: "landing" }));
 
 //Handlebars
 app.engine('hbs', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'hbs');
 
+// Bodyparser
+app.use(bodyParser.urlencoded({extended: false}));
+
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Gig routes
-app.use('/gigs', require('./routes/gigs'))
+app.use('/gigs', require('./routes/gigs'));
 
 
 const PORT = process.env.PORT || 8000;
